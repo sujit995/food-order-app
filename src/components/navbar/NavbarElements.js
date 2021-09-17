@@ -74,3 +74,31 @@ export const NavBtnLink = styled(Link)`
     color: #010606;
   }
 `;
+
+export const NavLogBtnLink = styled(Link)`
+  border-radius: 4px;
+  background: #db3f2e;
+  padding: 10px 22px;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  /* Second Nav */
+  margin-left: 24px;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #010606;
+  }
+`;
+
+export const ShowUserName = styled.h3`
+  font-size: 16px;
+  color: #fff;
+`
+
+export const Logo = styled.h2`
+  
+`

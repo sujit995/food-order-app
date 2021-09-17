@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { auth } from '../../config/Config';
+import { useHistory } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
     BoxContainer,
     TopContainer,
@@ -16,14 +22,24 @@ import {
 } from './StyleElement';
 
 
+
 export function AccountBox() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSignIn = (e) => {
+    const history = useHistory();
+
+    const handleSignIn = async (e) => {
         e.preventDefault();
-        console.log(email, password);
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            toast.success('login successfull');
+            history.push('/')
+        } catch (error) {
+            toast.error('loging fail');
+            console.log(error.message);
+        }
     }
 
     return (
