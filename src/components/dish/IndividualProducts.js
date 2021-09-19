@@ -42,10 +42,10 @@ const Button = styled.button`
     font-weight: bold;
     font-size: 1rem;
     margin: 1rem;
-    border: 2px solid $clr-primary;
-    background: orange;
+    border: none;
+    background: #ef5924;
     color: white;
-    transition: background 200ms ease-in, color 200ms ease-in;
+    border-radius: 5px;
 `
 
 const IndividualProducts = ({ items, addToCart }) => {

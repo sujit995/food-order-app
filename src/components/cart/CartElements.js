@@ -63,7 +63,9 @@ export const Button = styled.button`
     margin-top: 1rem;
     margin-left: 3rem;
     padding: .8rem 1.5rem .8rem 1.5rem;
-    background-color: orange;
+    background-color: #ef5924;
     color: white;
+    border: none;
+    border-radius: 5px;
 `
 

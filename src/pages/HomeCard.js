@@ -5,7 +5,7 @@ const MainCard = styled.div`
    
 `
 const CardComp = styled.div`
-    background: #eee5e9;
+    background: #ffffff;
     border: none;
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
     border-radius: 20px;

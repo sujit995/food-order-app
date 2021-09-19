@@ -35,11 +35,11 @@ const Navbar = ({ user, totalProducts }) => {
                                 </NavLink>
                             </NavMenu>
                             <NavBtn>
+                                <ShowUserName>{user}</ShowUserName>
                                 <NavLink to="/cart">
                                     <FaOpencart style={{ color: '#fff', fontSize: '24px' }} />
                                     <span>{totalProducts}</span>
                                 </NavLink>
-                                <ShowUserName>{user}</ShowUserName>
                                 <NavLogBtnLink to='/signin' onClick={() => {
                                     firebase.auth().signOut()
                                     history.push('/signin');
