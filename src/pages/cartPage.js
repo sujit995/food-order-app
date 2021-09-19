@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-toast.configure(); 
+toast.configure();
 
 const MainCart = styled.div`
     display: flex;
@@ -144,15 +144,14 @@ const CartPage = () => {
         let { status } = response.data;
         if (status === "success") {
             history.push('/menu');
-            toast.success('Your order has been placed successfully', {
-                position: 'top-right',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-            });
+            toast.success('Your order has been placed successfully');
+
+            const uid = auth.currentUser.uid;
+            const carts = await fs.collection('Cart ' + uid).get();
+            for (var snap of carts.docs) {
+                fs.collection('Cart ' + uid).doc(snap.id).delete();
+            }
+
         } else {
             alert("something wnt wrong in checkout");
         }
