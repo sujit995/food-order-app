@@ -37,9 +37,9 @@ const IndividualCart = ({ cart, cartProductIncrease, cartProductDecrease }) => {
                         <CardTitle>{cart.title}</CardTitle>
                         <Price>${cart.price}</Price>
                         <QuantityBox>
-                            <button><Icon icon={minus} size={30} onClick={handleProductIncrease} /></button>
+                            <button><Icon icon={minus} size={30} onClick={handleProductDecrease} /></button>
                             <Input>{cart.qty}</Input>
-                            <button><Icon icon={plus} size={30} onClick={handleProductDecrease} /></button>
+                            <button><Icon icon={plus} size={30} onClick={handleProductIncrease} /></button>
                         </QuantityBox>
                         <Button onClick={handleCartProductDelete}>Delete</Button>
                     </div>
