@@ -2,6 +2,47 @@ import { auth, fs } from '../config/Config';
 import React, { useState, useEffect } from 'react'
 import CartProducts from '../components/cart/CartProducts';
 import StripeCheckout from 'react-stripe-checkout';
+import styled from 'styled-components';
+
+const MainCart = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+`
+const MainHeading = styled.h1`
+    text-align: center;
+    text-decoration: underline 4px;
+`
+
+const ProductCart = styled.div`
+    
+`
+
+const CartSummary = styled.div`
+    width: 20%;
+    height: 240px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+`
+
+const TotalProduct = styled.div`
+    font-size: 1.5rem;
+    margin-top: 1rem;
+`
+const TotalPrice = styled.div`
+    font-size: 1.5rem;
+`
+const Heading = styled.h3`
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    text-decoration: underline 4px;
+`
 
 const CartPage = () => {
 
@@ -24,6 +65,7 @@ const CartPage = () => {
         })
     }, []);
 
+
     // global variable
     let Product;
 
@@ -31,7 +73,7 @@ const CartPage = () => {
     const cartProductIncrease = (cartProduct) => {
         Product = cartProduct;
         Product.qty = Product.qty + 1;
-        Product.TotalProdutPrice = Product.qty * Product.price;
+        Product.TotalProductPrice = Product.qty * Product.price;
         // Updating database
         auth.onAuthStateChanged(user => {
             if (user) {
@@ -42,6 +84,7 @@ const CartPage = () => {
                 console.log('user is not lodded in to increament')
             }
         })
+        console.log(cartProduct);
     }
 
     // cart product decrease functionality
@@ -49,7 +92,7 @@ const CartPage = () => {
         Product = cartProduct;
         if (Product.qty > 1) {
             Product.qty = Product.qty - 1;
-            Product.TotalProdutPrice = Product.qty * Product.price;
+            Product.TotalProductPrice = Product.qty * Product.price;
             // Updating database
             auth.onAuthStateChanged(user => {
                 if (user) {
@@ -74,31 +117,43 @@ const CartPage = () => {
 
     // getting the totalProductPrice from cartProducts in a separate array
     const price = cartProducts.map((cartProduct) => {
-        return cartProduct.TotalDishPrice;
-    })
+        return cartProduct.TotalProductPrice;
+    });
+
     const reduceOfPrice = (acc, currValue) => acc + currValue;
     const totalPrice = price.reduce(reduceOfPrice, 0);
     // console.log(cartProducts);
+
+    const handleToken = (token) => {
+        console.log(token);
+    }
 
     return (
         <div>
             {
                 cartProducts.length > 0 && (
-                    <div>
-                        <h1>Cart</h1>
-                        <div>
+                    <MainCart>
+                        <ProductCart>
+                            <MainHeading>Your Cart Items</MainHeading>
                             <CartProducts cartProducts={cartProducts}
                                 cartProductIncrease={cartProductIncrease}
                                 cartProductDecrease={cartProductDecrease}
                             />
-                        </div>
-                        <div>
-                            <h5>Cart Summary</h5>
-                            <div>Total no. of products: <span>{totalQty}</span></div>
-                            <div>Total price to Pay: <span>$ {totalPrice}</span></div>
-                            <StripeCheckout></StripeCheckout>
-                        </div>
-                    </div>
+                        </ProductCart>
+                        <CartSummary>
+                            <Heading>Cart Summary</Heading>
+                            <TotalProduct>Total no. of products: <span>{totalQty}</span></TotalProduct>
+                            <TotalPrice>Total price to Pay: <span>$ {totalPrice}</span></TotalPrice>
+                            <StripeCheckout style={{ width: '180px', marginTop: '30px' }}
+                                stripeKey="pk_test_51IDLm4CaTlxfMmIEiqlMxh4CuToLCLnBsTpsfRmfvzDIHxjfg8iujPMeuV0Lp5wc2ZPXyyD1Ywcd2RhCqAwqtPeG001vo3aoDL"
+                                token={handleToken}
+                                billingAddress
+                                shippingAddress
+                                name="All Products"
+                                amount={totalPrice * 100}
+                            ></StripeCheckout>
+                        </CartSummary>
+                    </MainCart>
                 )
             }
             {
