@@ -3,6 +3,14 @@ import React, { useState, useEffect } from 'react'
 import CartProducts from '../components/cart/CartProducts';
 import StripeCheckout from 'react-stripe-checkout';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure(); 
 
 const MainCart = styled.div`
     display: flex;
@@ -124,8 +132,30 @@ const CartPage = () => {
     const totalPrice = price.reduce(reduceOfPrice, 0);
     // console.log(cartProducts);
 
-    const handleToken = (token) => {
-        console.log(token);
+    // Payment Charging
+    const history = useHistory();
+    const handleToken = async (token) => {
+        const cart = { name: 'All Products', totalPrice }
+        const response = await axios.post('http://localhost:8080/checkout', {
+            token,
+            cart
+        });
+        console.log(response);
+        let { status } = response.data;
+        if (status === "success") {
+            history.push('/menu');
+            toast.success('Your order has been placed successfully', {
+                position: 'top-right',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            });
+        } else {
+            alert("something wnt wrong in checkout");
+        }
     }
 
     return (
