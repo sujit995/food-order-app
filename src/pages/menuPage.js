@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from 'react'
-import Dishes from '../components/dish/Dishes';
+import Products from '../components/dish/Products';
 import { auth,fs } from '../config/Config';
-
-
 
 const Menu = (props) => {
 
-    const [dishes, setDishes] = useState([]);
+    const [products, setProducts] = useState([]);
 
-    const getDishes = async () => {
-        const dishes = await fs.collection('dishes').get();
-        const dishArray = [];
-        for(let snap of dishes.docs){
+    const getProducts = async () => {
+        const products = await fs.collection('products').get();
+        const productArray = [];
+        for(let snap of products.docs){
             let data = snap.data();
             data.ID = snap.id;
-            dishArray.push({
+            productArray.push({
                 ...data
             })
-            if(dishArray.length === dishes.docs.length){
-                setDishes(dishArray)
+            if(productArray.length === products.docs.length){
+                setProducts(productArray)
             }
         }
     }
     
     useEffect(() => {
-        getDishes();
+        getProducts();
     }, [])
     
     function GetUserUid(){
@@ -41,13 +39,13 @@ const Menu = (props) => {
 
     const uid = GetUserUid();
 
-    let Dish;
-    const addToCart = (dish) =>{
+    let Product;
+    const addToCart = (product) =>{
         if(uid!==null){
-            Dish=dish;
-            dish['qty']=1;
-            dish['TotalDishPrice']=Dish.qty*Dish.price;
-            fs.collection('Cart ' + uid).doc(dish.ID).set(dish).then(()=>{
+            Product=product;
+            product['qty']=1;
+            product['TotalProductPrice']=Product.qty*Product.price;
+            fs.collection('Cart ' + uid).doc(product.ID).set(product).then(()=>{
                 console.log('successfully added to cart');
             })
         }else{
@@ -57,15 +55,15 @@ const Menu = (props) => {
 
     return (
         <>
-            { dishes.length > 0 && (
+            { products.length > 0 && (
                 <div>
                     <div>
-                        <Dishes dishes={dishes} addToCart={addToCart}/>
+                        <Products products={products} addToCart={addToCart}/>
                     </div>
                 </div>
             )}
             { 
-                dishes.length < 1 && (
+                products.length < 1 && (
                     <div>Please Wait...</div>
                 )
             }
