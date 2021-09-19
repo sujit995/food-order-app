@@ -11,8 +11,8 @@ import { auth, fs } from './config/Config';
 
 
 import './App.css';
-import AddDishes from './components/dish/AddDishes';
 import CartPage from './pages/cartPage';
+import AddProducts from './components/dish/AddProducts';
 
 
 const App = () => {
@@ -35,10 +35,24 @@ const App = () => {
 
   const user = GetCurrentUser();
 
+  // state of TotalProducts
+  const [totalProducts, setTotalProducts] = useState(0)
+  // getting cart products
+  useEffect(() => {
+      auth.onAuthStateChanged(user=>{
+          if(user){
+              fs.collection('Cart ' + user.uid).onSnapshot(snapshot=>{
+                  const qty = snapshot.docs.length;
+                  setTotalProducts(qty);
+              })
+          }
+      })
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar user={user} />
+        <Navbar user={user} totalProducts={totalProducts}/>
         <Switch>
           <Route exact path="/" component={Home} user={user} />
           <Route exact path="/menu" component={Menu} />
@@ -46,7 +60,7 @@ const App = () => {
           <Route exact path="/contact" component={ContactUs} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/admin" component={AddDishes} />
+          <Route exact path="/admin" component={AddProducts} />
           <Route exact path="/cart" component={CartPage} />
         </Switch>
       </BrowserRouter>
