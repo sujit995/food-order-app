@@ -14,7 +14,7 @@ import {
     Logo
 } from './NavbarElements';
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user, totalProducts }) => {
     const history = useHistory();
     return (
         <>
@@ -37,6 +37,7 @@ const Navbar = ({ user }) => {
                             <NavBtn>
                                 <NavLink to="/cart">
                                     <FaOpencart style={{ color: '#fff', fontSize: '24px' }} />
+                                    <span>{totalProducts}</span>
                                 </NavLink>
                                 <ShowUserName>{user}</ShowUserName>
                                 <NavLogBtnLink to='/signin' onClick={() => {
