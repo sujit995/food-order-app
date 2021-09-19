@@ -20,12 +20,12 @@ const MainHeading = styled.div`
     border: 1px solid transparent;
     width: 50%;
 `
-const MutedLink = styled(Link)`
+const Links = styled(Link)`
     padding: 1rem 1rem 1rem 1rem;
     width: 30%;
     font-size: 1.5rem;
     font-weight: bold;
-    background-color: #c31c3c;
+    background-color: #ef5924;
     color: white;
     border-radius: 1rem;
     cursor: pointer;
@@ -58,7 +58,7 @@ const Home = () => {
             <HeadingContainer>
                 <MainHeading>
                     <Heading>What are you <br /> having for Lunch?</Heading>
-                    <MutedLink to="/menu">Order Now</MutedLink>
+                    <Links to="/menu">Order Now</Links>
                 </MainHeading>
                 <SubHeading>
                     <SmallText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
