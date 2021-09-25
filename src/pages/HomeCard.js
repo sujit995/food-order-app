@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 const MainCard = styled.div`
-   padding: 20px;
-   
+   padding: 10px;
 `
 const CardComp = styled.div`
     background: #ffffff;
@@ -10,17 +9,25 @@ const CardComp = styled.div`
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
     border-radius: 20px;
     text-align: center;
-    width: 250px;
+    justify-content: center;
+    width: 200px;
     transition: transform 0.3s; 
     &:hover{
         transition: translateY(5px);
         box-shadow: 2px 2px 26px 0px rgba(0,0,0,0.3);
     }  
+    @media screen and (max-width: 768px){
+        justify-content: center;
+    }
+    @media screen and (max-width: 480px){
+        justify-content: center;
+    }
 `
 
 const Image = styled.img`
   width: 150px;
-  height: 180px;  
+  height: 180px; 
+  border-radius: 0px 10px  
 `
 
 const Text = styled.div`

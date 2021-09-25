@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from '../components/Modal';
 
 toast.configure();
 
@@ -19,6 +20,10 @@ const MainCart = styled.div`
     justify-content: space-around;
     margin-top: 4rem;
     margin-bottom: 4rem;
+    @media screen and (max-width: 480px){
+        display: flex;
+        flex-direction: column;
+    }
 `
 const MainHeading = styled.h1`
     text-align: center;
@@ -26,33 +31,75 @@ const MainHeading = styled.h1`
 `
 
 const ProductCart = styled.div`
-    
+    width: 70%;
+    @media screen and (min-width: 400px){
+        margin: 20px;
+    }
 `
 
 const CartSummary = styled.div`
-    width: 20%;
-    height: 240px;
+    width: 30%;
+    height: 250px;
     text-align: center;
     background-color: #fff;
     border-radius: 10px;
     border: none;
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    margin: 5px;
+    @media screen and (max-width: 480px){
+        width: 300px;
+        margin: auto;
+    }
 `
 
 const TotalProduct = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-top: 1rem;
+    @media screen and (max-width: 768px){
+        font-size: 1rem;
+    }
 `
 const TotalPrice = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    @media screen and (max-width: 768px){
+        font-size: 1rem;
+    }
 `
 const Heading = styled.h3`
     font-size: 1.5rem;
     margin-top: 1rem;
     text-decoration: underline 4px;
+    @media screen and (max-width: 768px){
+        font-size: 1rem;
+    }
 `
 
+const Text = styled.h6`
+    margin: 10px;
+`
+
+const Button = styled.button`
+    height: 28px;
+    width: 120px;
+    background-color: #00E400;
+    border: #;
+    border-radius: 5px;
+    box-shadow: .5px .5px .5px .5px rgba(0,0,0,0.5);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+`
+
+const EmptyCart = styled.div`
+    font-size: 3rem;
+    font-weight: bold;
+    font-style: italic;
+` 
+
 const CartPage = () => {
+
+    // show modal state
+    const [showModal, setShowModal] = useState(false);
 
     const [cartProducts, setCartProducts] = useState([]);
 
@@ -157,6 +204,14 @@ const CartPage = () => {
         }
     }
 
+    const triggerModal = () => {
+        setShowModal(true);
+    }
+
+    const hideModal = () => {
+        setShowModal(false);
+    }
+
     return (
         <div>
             {
@@ -173,7 +228,7 @@ const CartPage = () => {
                             <Heading>Cart Summary</Heading>
                             <TotalProduct>Total no. of products: <span>{totalQty}</span></TotalProduct>
                             <TotalPrice>Total price to Pay: <span>$ {totalPrice}</span></TotalPrice>
-                            <StripeCheckout style={{ width: '180px', marginTop: '30px' }}
+                            <StripeCheckout style={{ marginTop: '30px' }}
                                 stripeKey="pk_test_51IDLm4CaTlxfMmIEiqlMxh4CuToLCLnBsTpsfRmfvzDIHxjfg8iujPMeuV0Lp5wc2ZPXyyD1Ywcd2RhCqAwqtPeG001vo3aoDL"
                                 token={handleToken}
                                 billingAddress
@@ -181,15 +236,17 @@ const CartPage = () => {
                                 name="All Products"
                                 amount={totalPrice * 100}
                             ></StripeCheckout>
+                            <Text>Or</Text>
+                            <Button onClick={() => triggerModal()}>Cah on Delivery</Button>
                         </CartSummary>
                     </MainCart>
-                )
-            }
-            {
-                cartProducts.length < 1 && (
-                    <div>Your cart is empty</div>
-                )
-            }
+                )}
+            {cartProducts.length < 1 && (
+                    <EmptyCart>Your cart is empty</EmptyCart>
+            )}
+            {showModal === true && (
+                    <Modal totalPrice={totalPrice} totalQty={totalQty} hideModal={hideModal}/>
+            )}
         </div>
     )
 }

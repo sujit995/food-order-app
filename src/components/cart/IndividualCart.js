@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardContainer, CardBody, CardImage, CardTitle, Price, SubHeading, QuantityBox, Input, CardWrapper, Button, CartDetails } from './CartElements';
+import { CardBody, CardImage, CardTitle, Price, QuantityBox, Input, CardWrapper, Button, CardDetails } from './CartElements';
 import { Icon } from 'react-icons-kit';
 import { plus } from 'react-icons-kit/feather/plus';
 import { minus } from 'react-icons-kit/feather/minus';
@@ -28,23 +28,21 @@ const IndividualCart = ({ cart, cartProductIncrease, cartProductDecrease }) => {
 
     return (
         <>
-            <CardContainer>
                 <CardWrapper>
                     <CardBody>
                         <CardImage src={cart.url} alt="dish-image" />
                     </CardBody>
-                    <div>
+                    <CardDetails>
                         <CardTitle>{cart.title}</CardTitle>
                         <Price>${cart.price}</Price>
                         <QuantityBox>
-                            <button><Icon icon={minus} size={30} onClick={handleProductDecrease} /></button>
+                            <button><Icon icon={minus} size={20} onClick={handleProductDecrease} style={{cursor: 'pointer'}} /></button>
                             <Input>{cart.qty}</Input>
-                            <button><Icon icon={plus} size={30} onClick={handleProductIncrease} /></button>
+                            <button><Icon icon={plus} size={20} onClick={handleProductIncrease} style={{cursor: 'pointer'}} /></button>
                         </QuantityBox>
                         <Button onClick={handleCartProductDelete}>Delete</Button>
-                    </div>
+                    </CardDetails>
                 </CardWrapper>
-            </CardContainer>
         </>
     )
 }

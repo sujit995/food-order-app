@@ -14,6 +14,20 @@ position: relative;
 overflow: hidden;
 margin-top: 90px;
 margin-left: 60px;
+@media screen and (max-width: 1024px) {
+    margin-left: 110px
+}
+@media screen and (max-width: 768px) {
+    width: 320px;
+    margin-left: 45px
+}
+@media screen and (max-width: 480px) {
+    width: 320px;
+    margin-left: 45px
+}
+@media screen and (max-width: 360px) {
+    margin-left: 20px
+}
 `;
 
 const CardBody = styled.div`

@@ -31,17 +31,31 @@ const Links = styled(Link)`
     cursor: pointer;
     border: none;
     text-decoration: none;
+    @media screen and (max-width: 768px){
+        
+    }
 `
 const SubHeading = styled.div`
     border: 1px solid transparent;
     width: 20%;
+    @media screen and (max-width: 768px){
+        display: none;
+    }
 `
 const SmallText = styled.h4`
-    font-size: 1.4rem;
+    font-size: 1rem;
 `
 
 const Heading = styled.h1`
     font-size: 6rem;
+    @media screen and (max-width: 768px){
+        font-size: 4rem;
+        text-align: left;
+    }
+    @media screen and (max-width: 480px){
+        font-size: 3rem;
+        text-align: left;
+    }
 `
 const ImageContainer = styled.div`
    margin: 90px; 
@@ -50,6 +64,10 @@ const ImageContainer = styled.div`
    flex-wrap: wrap;
    justify-content: flex-start;
    gap: 10px 10px;
+
+   @media screen and (max-width: 480px){
+        justify-content: center;
+    }
  `
 
 const Home = () => {
@@ -57,7 +75,7 @@ const Home = () => {
         <MainContainer>
             <HeadingContainer>
                 <MainHeading>
-                    <Heading>What are you <br /> having for Lunch?</Heading>
+                    <Heading>What are you <br /> having for <br />Lunch?</Heading><br /><br />
                     <Links to="/menu">Order Now</Links>
                 </MainHeading>
                 <SubHeading>

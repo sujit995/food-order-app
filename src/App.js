@@ -13,6 +13,8 @@ import { auth, fs } from './config/Config';
 import './App.css';
 import CartPage from './pages/cartPage';
 import AddProducts from './components/dish/AddProducts';
+import Sidebar from './components/sidebar/Sidebar';
+
 
 
 const App = () => {
@@ -39,20 +41,22 @@ const App = () => {
   const [totalProducts, setTotalProducts] = useState(0)
   // getting cart products
   useEffect(() => {
-      auth.onAuthStateChanged(user=>{
-          if(user){
-              fs.collection('Cart ' + user.uid).onSnapshot(snapshot=>{
-                  const qty = snapshot.docs.length;
-                  setTotalProducts(qty);
-              })
-          }
-      })
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        fs.collection('Cart ' + user.uid).onSnapshot(snapshot => {
+          const qty = snapshot.docs.length;
+          setTotalProducts(qty);
+        })
+      }
+    })
   }, []);
+
+ 
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar user={user} totalProducts={totalProducts}/>
+        <Navbar user={user} totalProducts={totalProducts} />
         <Switch>
           <Route exact path="/" component={Home} user={user} />
           <Route exact path="/menu" component={Menu} />

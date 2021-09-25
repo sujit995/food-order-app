@@ -1,7 +1,9 @@
 import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import { FaOpencart } from 'react-icons/fa'
-import React from 'react';
+import React, { useState } from 'react';
+import Sidebar from '../sidebar/Sidebar';
+
 import {
     Nav,
     NavLink,
@@ -11,18 +13,29 @@ import {
     NavBtnLink,
     NavLogBtnLink,
     ShowUserName,
-    Logo
+    Logo,
+    CartWrapper,
+    Cart
 } from './NavbarElements';
+
 
 const Navbar = ({ user, totalProducts }) => {
     const history = useHistory();
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <>
             <Nav>
                 <NavLink to='/'>
                     <Logo>Restro</Logo>
                 </NavLink>
-                <Bars />
+                <Bars onClick={toggle} toggle={toggle} />
+                <Sidebar isOpen={isOpen} toggle={toggle} />
                 {
                     user ?
                         <>
@@ -37,16 +50,18 @@ const Navbar = ({ user, totalProducts }) => {
                             <NavBtn>
                                 <ShowUserName>{user}</ShowUserName>
                                 <NavLink to="/cart">
-                                    <FaOpencart style={{ color: '#fff', fontSize: '24px' }} />
-                                    <span>{totalProducts}</span>
+                                    <CartWrapper>
+                                        <FaOpencart style={{ color: '#000', fontSize: '28px' }} />
+                                        <span>{totalProducts}</span>
+                                    </CartWrapper>
                                 </NavLink>
                                 <NavLogBtnLink to='/signin' onClick={() => {
                                     firebase.auth().signOut()
                                     history.push('/signin');
                                 }}>LogOut</NavLogBtnLink>
-                                <NavLink to='/admin' activeStyle>
+                                {/* <NavLink to='/admin' activeStyle>
                                     Admin
-                                </NavLink>
+                                </NavLink> */}
                             </NavBtn>
                         </>
                         :
@@ -62,9 +77,9 @@ const Navbar = ({ user, totalProducts }) => {
                             <NavBtn>
                                 <NavBtnLink to='/signin'>Sign In</NavBtnLink>
                             </NavBtn>
-                            <NavLink to='/admin' activeStyle>
+                            {/* <NavLink to='/admin' activeStyle>
                                 Admin
-                            </NavLink>
+                            </NavLink> */}
                         </>
                 }
             </Nav>

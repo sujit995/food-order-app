@@ -32,8 +32,9 @@ border-radius: 50%;
 transform: rotate(60deg);
 top: -260px;
 left: -10px;
-background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+
+background: rgb(36,26,0);
+background: linear-gradient(90deg, rgba(36,26,0,1) 0%, rgba(218,121,17,1) 35%, rgba(240,207,13,1) 100%);
 `
 export const HeadContainers = styled.div`
     width: 100%;
@@ -118,9 +119,8 @@ border: none;
 border-radius: 100px 100px 100px 100px;
 cursor: pointer;
 transition: all, 240ms ease-in-out;
-background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-margin-top: 30px;
+background: rgb(218,121,17);
+background: linear-gradient(90deg, rgba(218,121,17,1) 52%, rgba(240,207,13,1) 100%);
 
 &:hover{
     filter: brightness(1.03);
