@@ -13,7 +13,6 @@ import { auth, fs } from './config/Config';
 import './App.css';
 import CartPage from './pages/cartPage';
 import AddProducts from './components/dish/AddProducts';
-import Sidebar from './components/sidebar/Sidebar';
 
 
 
@@ -52,7 +51,6 @@ const App = () => {
   }, []);
 
  
-
   return (
     <div className="App">
       <BrowserRouter>

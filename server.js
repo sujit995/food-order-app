@@ -4,6 +4,18 @@ const { v4: uuidv4 } = require('uuid');
 const stripe = require('stripe')('sk_test_51IDLm4CaTlxfMmIEbp2VT9SsW0pBdcNdV6jIjA0fQ294cKog0InFG93aHOzYVqSrrFrIR74v2mBAjqUDuE3gtwxg00QNLFBpin');
 
 const app = express();
+
+const path = require('path');
+
+const port = process.env.PORT || 8080;
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('build'));
+    app.get('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    })
+}
+
 app.use(cors());
 
 app.use(express.json());
@@ -48,6 +60,6 @@ app.post('/checkout', async (req, res) => {
     res.json({ status });
 })
 
-app.listen(8080, () => {
-    console.log('your app is running on port no 8080');
+app.listen(port, () => {
+    console.log('your app is running on port no', port);
 })

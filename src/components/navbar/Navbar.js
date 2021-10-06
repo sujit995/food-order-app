@@ -10,12 +10,12 @@ import {
     Bars,
     NavMenu,
     NavBtn,
+    SignInBtn,
     NavBtnLink,
     NavLogBtnLink,
     ShowUserName,
     Logo,
     CartWrapper,
-    Cart
 } from './NavbarElements';
 
 
@@ -74,9 +74,9 @@ const Navbar = ({ user, totalProducts }) => {
                                     Contact Us
                                 </NavLink>
                             </NavMenu>
-                            <NavBtn>
+                            <SignInBtn>
                                 <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-                            </NavBtn>
+                            </SignInBtn>
                             {/* <NavLink to='/admin' activeStyle>
                                 Admin
                             </NavLink> */}

@@ -73,7 +73,7 @@ const IndividualProducts = ({ items, addToCart }) => {
                 <CardImage src={items.url} alt="dish-image" />
                 <CardTitle>{items.title}</CardTitle>
                 <CardDescription>{items.description}</CardDescription>
-                <Price>${items.price}</Price>
+                <Price>₹{items.price}</Price>
             </CardBody>
             <Button onClick={handleAddToCart}>Add To Cart</Button>
         </CardContainer>
