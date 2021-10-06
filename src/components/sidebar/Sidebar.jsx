@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
-import { FaOpencart } from 'react-icons/fa'
 import { auth, fs } from '../../config/Config';
 
 
@@ -14,7 +13,6 @@ import {
     SidebarBtn,
     SidebarBtnLink,
     NavLogBtnLink,
-    ShowUserName
 } from './SidebarElement';
 
 const Sidebar = ({ isOpen, toggle }) => {

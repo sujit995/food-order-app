@@ -74,7 +74,7 @@ export function AccountBox() {
                     <FormContainer onSubmit={handleSignUp}>
                         <Input type="text" placeholder="Fullname" required onChange={(e) => setFullName(e.target.value)} value={fullName} />
                         <Input type="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} value={email} />
-                        <Input type="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} value={password} />
+                        <Input type="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} value={password} /><br />
                         <SubmitButton type="submit">SignUp</SubmitButton>
                         <MutedLink>Aready have an account?<BoldLink to="signin"> SignIn</BoldLink></MutedLink>
                     </FormContainer>

@@ -34,7 +34,7 @@ const IndividualCart = ({ cart, cartProductIncrease, cartProductDecrease }) => {
                     </CardBody>
                     <CardDetails>
                         <CardTitle>{cart.title}</CardTitle>
-                        <Price>${cart.price}</Price>
+                        <Price>₹{cart.price}</Price>
                         <QuantityBox>
                             <button><Icon icon={minus} size={20} onClick={handleProductDecrease} style={{cursor: 'pointer'}} /></button>
                             <Input>{cart.qty}</Input>

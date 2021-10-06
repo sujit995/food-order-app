@@ -19,9 +19,8 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-  @media screen and (max-width: 768px) {
-    
-  }
+  font-size: 1.2rem;
+  font-weight: bold;
 `;
 
 export const Bars = styled(FaBars)`
@@ -51,11 +50,16 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   margin-right: 24px;
+`;
+
+export const SignInBtn = styled.nav`
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
   @media screen and (max-width: 768px) {
     display: none;
   }
-  }
-`;
+`
 
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;
@@ -125,4 +129,5 @@ export const CartWrapper = styled.div`
     cursor: pointer;
   }
 `
+
 
