@@ -3,29 +3,30 @@ import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-  background: #FC8019;
-  height: 80px;
+  background: #fff;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem calc((80vw - 1000px) / 2);
   z-index: 10; 
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 `;
 
 export const NavLink = styled(Link)`
-  color: #000;
+  color: #000333;
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 500;
 `;
 
 export const Bars = styled(FaBars)`
   display: none;
-  color: #000;
+  color: #009933;
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
@@ -63,7 +64,7 @@ export const SignInBtn = styled.nav`
 
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;
-  background: #000;
+  background: #009933;
   padding: 10px 22px;
   color: #fff;
   outline: none;
@@ -75,8 +76,7 @@ export const NavBtnLink = styled(Link)`
   margin-left: 24px;
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
+    background: #000333;
   }
 `;
 
@@ -111,8 +111,8 @@ export const ShowUserName = styled.h3`
 `
 
 export const Logo = styled.h2`
-  color: #281e32;
-  font-size: 36px
+  color:  #000333;
+  font-size: 25px
 `
 
 export const CartWrapper = styled.div`

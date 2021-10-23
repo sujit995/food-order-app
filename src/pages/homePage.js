@@ -1,26 +1,19 @@
 import React from 'react'
-import HomeCard from './HomeCard';
 
-import { MainContainer, HeadingContainer, MainHeading, Heading, Links, SubHeading, ImageContainer, Line, SmallText } from './StyleElements';
-
-
+import { MainContainer, HeadContainer, Links, Head, SubHead, ImgContainer, SmallText } from './StyleElements';
 
 const Home = () => {
     return (
         <MainContainer>
-            <HeadingContainer>
-                <MainHeading>
-                    <Heading>What are you <br /> having for <br />Lunch?</Heading><br /><br />
-                    <Links to="/menu">Order Now</Links>
-                </MainHeading>
-                <SubHeading>
-                    <SmallText>One Click, one order and you get the food delivered.</SmallText>
-                    <Line />
-                </SubHeading>
-            </HeadingContainer>
-            <ImageContainer>
-                <HomeCard />
-            </ImageContainer>
+                    <HeadContainer>
+                        <Head>Our Special Dish</Head>
+                        <SubHead>Fried Chicken</SubHead>
+                        <SmallText>Your Favorite Food delivery partner</SmallText>
+                        <Links to="/menu">Order Now</Links>
+                    </HeadContainer>
+                    <ImgContainer>
+                        <img src="images/home-img-2.png" alt="" />
+                    </ImgContainer>   
         </MainContainer>
     )
 }

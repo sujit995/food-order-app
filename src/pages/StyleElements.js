@@ -98,7 +98,7 @@ export const EmptyCart = styled.div`
         font-size: 2rem;
         margin-top: 40px;
     }
-` 
+`
 
 // Contact Page Styling
 export const ContactFormWrapper = styled.div`
@@ -177,57 +177,76 @@ export const ContactButton = styled.button`
 
 export const MainContainer = styled.div`
     display: flex;
-    flex-direction: column;
-`
-
-export const HeadingContainer = styled.div`
-    display: flex;
     flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    margin-top: 4rem;
+    align-items: center;
+    padding-top: 6rem;
+    padding-left: 3rem;
+    @media screen and (max-width: 768px){
+        display: flex;
+        flex-direction: column;
+        padding: 70px 0px;
+    }
 `
-
-export const MainHeading = styled.div`
-    border: 1px solid transparent;
-    width: 50%;
+export const HeadContainer = styled.div`
+    flex:1 1 45rem;
+    @media screen and (max-width: 768px){
+        flex:0 0 25rem;
+        text-align: center;
+    }
+`
+export const ImgContainer = styled.div`
+    flex:1 1 45rem;
+    @media screen and (max-width: 1125px){
+       img{
+        width: 100%;
+        height: 100%;
+       }
+       @media screen and (max-width: 768px){
+        flex:0 0 15rem;
+    }
+       
+    }
 `
 export const Links = styled(Link)`
-    padding: 1rem 1rem 1rem 1rem;
-    width: 30%;
-    font-size: 1.5rem;
-    font-weight: bold;
-    background-color: #ef5924;
-    color: white;
-    border-radius: 1rem;
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #000333;
+    border-radius: .5rem;
     cursor: pointer;
-    border: none;
+    padding: .6rem .6rem;
     text-decoration: none;
+    &:hover {
+        background: green;
+    }
     @media screen and (max-width: 768px){
         
     }
 `
-export const SubHeading = styled.div`
-    border: 1px solid transparent;
-    margin-left: 20px;
-    width: 20%;
-    @media screen and (max-width: 768px){
-        display: none;
-    }
-`
 
-export const Line = styled.hr`
-    width: 30%;
-    background-color: #ef5924;
-    height: 5px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 4px;
+export const Head = styled.span`
+    color: green;
+    font-size: 2rem;
+    @media screen and (max-width: 768px){
+        font-size: 40px;
+       }
+`
+export const SubHead = styled.h3`
+    color: #000333;
+    font-size: 4rem;
+       @media screen and (max-width: 768px){
+        font-size: 60px;
+       }
 `
 export const SmallText = styled.h4`
-    margin-top: 30px;
     font-size: 1.5rem;
+    padding: .5rem 0;
+    line-height: 1.5rem;
     color: #696969;
+    @media screen and (max-width: 1000px){
+        font-size: 20px
+       }
 `
 
 export const Heading = styled.h1`
@@ -241,15 +260,95 @@ export const Heading = styled.h1`
         text-align: left;
     }
 `
-export const ImageContainer = styled.div`
-   margin: 90px; 
-   align-items: center;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: flex-start;
-   gap: 10px 10px;
+// About Page
 
-   @media screen and (max-width: 480px){
-        justify-content: center;
+export const Container = styled.div`
+    padding-top: 2rem;
+    h3{
+        text-align: center;
+        font-size: 2rem;
+        color: green;
     }
- `
+    h1{
+        text-align: center;
+        font-size: 2.5rem;
+    }
+`
+
+export const RowContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 5rem;
+    @media screen and (max-width: 768px){
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+       }
+`
+export const ImgSection = styled.div`
+    flex:1 1 45rem;
+    img{
+        width: 100%;
+    }
+`
+export const Content = styled.div`
+    flex:1 1 45rem;
+    padding: .8rem 1rem;
+    h3{
+        color: black;
+        font-size: 3rem;
+        padding: 0.5rem 0;
+    }
+    p{
+        color: #696969;
+        font-size: 1.1rem;
+        padding: .8rem 0;
+        line-height: 1.2;
+    }
+    .btn{
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #000333;
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .6rem .6rem;
+    text-decoration: none;
+    &:hover {
+        background: green;
+    }
+    }
+`
+export const IconContainer = styled.div`
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: .5rem 0;
+    margin-top: 0.5rem;
+`
+export const Icons = styled.div`
+    background: #eeeeee;
+    border-radius: .5rem;
+    border: 1px solid rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex: 1 1 8rem;
+    padding: 1.2rem 0rem;
+    i{
+        font-size: 1.2rem;
+        color: green;
+    }
+    span{
+        font-size: 1rem;
+        color: black;
+    }
+`
+export const ProdContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+`

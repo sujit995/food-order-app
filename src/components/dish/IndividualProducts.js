@@ -3,63 +3,62 @@ import styled from 'styled-components';
 
 
 const CardContainer = styled.div`
-width: 350px;
-min-height: 450px;
-display: inline-block;
-flex-direction: column;
-border-radius: 19px;
-background-color: #fff;
-box-shadow: 0 0 8px rgba(15, 15, 15, 0.28);
-position: relative;
-overflow: hidden;
-margin-top: 90px;
-margin-left: 60px;
-@media screen and (max-width: 1024px) {
-    margin-left: 110px
-}
-@media screen and (max-width: 768px) {
-    width: 320px;
-    margin-left: 45px
-}
-@media screen and (max-width: 480px) {
-    width: 320px;
-    margin-left: 45px
-}
-@media screen and (max-width: 360px) {
-    margin-left: 20px
-}
+    background: #fff;
+    border: .1rem solid rgba(0,0,0,0.4);
+    border-radius: .5rem;
 `;
 
-const CardBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-`
-const CardImage = styled.img`
-    height: 12rem;
+const CardImage = styled.div`
+    height: 25rem;
     width: 100%;
-    object-fit: cover;
+    padding: 1.5rem;
+    overflow: hidden;
+    posirion: relative;
+    img{
+        height: 100%;
+        width: 100%;
+        border-radius: 0.5rem;
+        object-fit: cover;
+    }
+    }
 `
-const CardTitle = styled.h2`
-    padding: 1rem;
-`
-const CardDescription = styled.p`
-    padding: 0 1rem;
-`
-const Price = styled.h3`
-    padding: 0 1rem;
+
+const Content = styled.div`
+    padding: 2rem;
+    padding-top: 0;
+    .stars{
+        padding-bottom: 1rem;
+    }
+    i{
+        font-size: 1.7rem;
+        color: green;
+    }
+    h3{
+        color: black;
+        font-size: 2.5rem;
+    }
+    p{
+        color: #696969;
+        font-size: 1.6rem;
+        padding: .5rem 0;
+        line-height: 1;
+    }
+    span{
+        color: green;
+        margin-left: 1rem;
+        font-size: 2.5rem;
+    }
 `
 const Button = styled.button`
-    padding: 1rem;
-    font-family: inherit;
-    font-weight: bold;
-    font-size: 1rem;
-    margin: 1rem;
-    border: none;
-    background: #ef5924;
-    color: white;
-    border-radius: 5px;
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #000333;
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .6rem .6rem;
+    text-decoration: none;
 `
 
 const IndividualProducts = ({ items, addToCart }) => {
@@ -68,15 +67,26 @@ const IndividualProducts = ({ items, addToCart }) => {
         addToCart(items);
     }
     return (
-        <CardContainer>
-            <CardBody>
-                <CardImage src={items.url} alt="dish-image" />
-                <CardTitle>{items.title}</CardTitle>
-                <CardDescription>{items.description}</CardDescription>
-                <Price>₹{items.price}</Price>
-            </CardBody>
-            <Button onClick={handleAddToCart}>Add To Cart</Button>
-        </CardContainer>
+        <>
+            <CardContainer>
+                <CardImage>
+                    <img src={items.url} alt="dish-image" />
+                </CardImage>
+                <Content>
+                    <div className="stars">
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star-half-alt"></i>
+                    </div>
+                    <h3>{items.title}</h3>
+                    <p>{items.description}</p>
+                    <Button onClick={handleAddToCart}>Add To Cart</Button>
+                    <span>₹{items.price}</span>
+                </Content>
+            </CardContainer>
+        </>
     )
 }
 

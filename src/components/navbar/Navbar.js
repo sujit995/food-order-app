@@ -4,6 +4,7 @@ import { FaOpencart } from 'react-icons/fa'
 import React, { useState } from 'react';
 import Sidebar from '../sidebar/Sidebar';
 
+
 import {
     Nav,
     NavLink,
@@ -32,7 +33,7 @@ const Navbar = ({ user, totalProducts }) => {
         <>
             <Nav>
                 <NavLink to='/'>
-                    <Logo>Restro</Logo>
+                <i className="fas fa-utensils" style={{ color:'#009933', fontSize:'20px' }}></i><Logo>Resto</Logo>
                 </NavLink>
                 <Bars onClick={toggle} toggle={toggle} />
                 <Sidebar isOpen={isOpen} toggle={toggle} />
@@ -40,6 +41,12 @@ const Navbar = ({ user, totalProducts }) => {
                     user ?
                         <>
                             <NavMenu>
+                                <NavLink to='/' activeStyle>
+                                    Home
+                                </NavLink>
+                                <NavLink to='/about' activeStyle>
+                                    AboutUs
+                                </NavLink>
                                 <NavLink to='/menu' activeStyle>
                                     Menu
                                 </NavLink>
@@ -67,6 +74,12 @@ const Navbar = ({ user, totalProducts }) => {
                         :
                         <>
                             <NavMenu>
+                               <NavLink to='/' activeStyle>
+                                    Home
+                                </NavLink>
+                                <NavLink to='/about' activeStyle>
+                                    AboutUs
+                                </NavLink>
                                 <NavLink to='/menu' activeStyle>
                                     Menu
                                 </NavLink>
