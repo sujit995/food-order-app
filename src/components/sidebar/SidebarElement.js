@@ -7,7 +7,7 @@ export const SidebarContainer = styled.aside`
   z-index: 999;
   width: 250px;
   height: 100%;
-  background: #ef5924;
+  background: #696969;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@ export const Icon = styled.div`
   right: 1.5rem;
   background: transparent;
   border: transparent;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   outline: none;
 `;
@@ -37,7 +37,7 @@ export const Icon = styled.div`
 export const SidebarMenu = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 80px);
+  grid-template-rows: repeat(3, 60px);
   text-align: center;
   margin-top: 80px;
 `;
@@ -46,7 +46,7 @@ export const SidebarLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-decoration: none;
   list-style: none;
   transition: 0.2s ease-in-out;
@@ -84,13 +84,14 @@ export const SidebarBtnLink = styled(Link)`
 `;
 
 export const SidebarBtn = styled.nav`
-  margin-right: 15px;
+  margin-right: 1.8rem;
+  margin-top: 2rem;
 `;
 
 export const NavLogBtnLink = styled(Link)`
   border-radius: 4px;
-  background: #db3f2e;
-  padding: 10px 22px;
+  background: green;
+  padding: 10px 25px;
   color: #fff;
   outline: none;
   border: none;

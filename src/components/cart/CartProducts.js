@@ -3,7 +3,7 @@ import IndividualCart from './IndividualCart'
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-    width: 400px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -11,12 +11,6 @@ const CardContainer = styled.div`
     background-color: #fff;
     box-shadow: 0 0 8px rgba(15, 15, 15, 0.28);
     overflow: hidden;
-    @media screen and (max-width: 768px){
-        width: 300px;
-    }
-    @media screen and (max-width: 480px){
-        width: 320px;
-    }
 `;
 
 

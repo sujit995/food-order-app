@@ -3,33 +3,34 @@ import styled from 'styled-components';
 export const CardBody = styled.div`
   width: 40%;
   cursor: pointer;
-`
-export const CardImage = styled.img`
-    height: 12rem;
+  padding: .5rem;
+  img{
+    height: 10rem;
     width: 100%;
     object-fit: cover;
+    border-radius: 1rem;
+  }
 `
+
 export const CardDetails = styled.div`
-  width: 60%;
+  width: 40%;
   text-align: center;
   cursor: pointer;
+  h3{
+    padding: .5rem;
+    font-size: 1.2rem;
+  }
+  span{
+      color: green;
+      font-size: 1.1rem;
+      padding: 0 1rem;
+  }
+  .far{
+      padding-top: 1rem;
+      color: red;
+  }
 `
-export const CardTitle = styled.h2`
-    padding: 1rem;
-    font-size: 1rem;
-`
-export const CardDescription = styled.p`
-    padding: 0 1rem;
-`
-export const Price = styled.h3`
-    padding: 0 1rem;
-`
-export const SubHeading = styled.span`
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-`
+
 
 export const QuantityBox = styled.div`
     display: flex;
@@ -49,13 +50,4 @@ export const CardWrapper = styled.div`
     flex-direction: row;
 `
 
-export const Button = styled.button`
-    margin-top: 1rem;
-    padding: .8rem 1.5rem .8rem 1.5rem;
-    background-color: #ef5924;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-`
 

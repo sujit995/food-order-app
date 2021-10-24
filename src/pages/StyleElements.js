@@ -4,23 +4,21 @@ import { Link } from 'react-router-dom';
 // Cart Page Styling
 export const MainCart = styled.div`
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    @media screen and (max-width: 480px){
-        display: flex;
-        flex-direction: column;
-    }
+    flex-direction: column;
+    align-items: center
 `
 export const TopHeading = styled.h1`
     text-align: center;
-    text-decoration: underline 4px;
+    padding-top: 2rem;
 `
 
 export const ProductCart = styled.div`
-    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @media screen and (max-width: 768px){
+        display: flex;
+        flex-direction: column;
+    }
     @media screen and (min-width: 400px){
         margin: 20px;
     }
@@ -38,9 +36,9 @@ export const CartSummary = styled.div`
     @media screen and (max-width: 876px){
         height: 300px;
     }
-    @media screen and (max-width: 480px){
-        width: 300px;
-        margin: auto;
+    @media screen and (max-width: 650px){
+        width: 200px;
+        height: 250px;
     }
 `
 
@@ -80,7 +78,6 @@ export const Button = styled.button`
     height: 28px;
     width: 120px;
     background-color: #00E400;
-    border: #;
     border-radius: 5px;
     box-shadow: .5px .5px .5px .5px rgba(0,0,0,0.5);
     color: white;
@@ -116,6 +113,7 @@ export const Form = styled.form`
 `
 export const ContactHeading = styled.h1`
      margin-bottom: 30px;
+     color: green;
 `
 export const Input = styled.input`
   width: 400px;
@@ -349,6 +347,12 @@ export const Icons = styled.div`
 `
 export const ProdContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    @media screen and (max-width: 480px){
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 1rem;
+    }
 `

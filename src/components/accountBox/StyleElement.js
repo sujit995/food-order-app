@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const BoxContainer = styled.div`
 width: 350px;
-min-height: 550px;
+min-height: 500px;
 display: flex;
 flex-direction: column;
 border-radius: 19px;
@@ -24,17 +24,16 @@ padding-bottom: 5em;
 `
 export const BackDrop = styled.div`
 width: 100%;
-height: 550px;
+height: 500px;
 position: absolute;
 display: flex;
 flex-direction: column;
 border-radius: 50%; 
 transform: rotate(60deg);
-top: -260px;
+top: -240px;
 left: -10px;
-
-background: rgb(36,26,0);
-background: linear-gradient(90deg, rgba(36,26,0,1) 0%, rgba(218,121,17,1) 35%, rgba(240,207,13,1) 100%);
+background: rgb(3,107,59);
+background: linear-gradient(90deg, rgba(3,107,59,1) 0%, rgba(35,191,50,0.9640231092436975) 62%, rgba(49,218,74,1) 100%);
 `
 export const HeadContainers = styled.div`
     width: 100%;
@@ -67,7 +66,6 @@ width: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
-margin-top: 10px;
 `;
 
 export const FormContainer = styled.form`
@@ -119,8 +117,8 @@ border: none;
 border-radius: 100px 100px 100px 100px;
 cursor: pointer;
 transition: all, 240ms ease-in-out;
-background: rgb(218,121,17);
-background: linear-gradient(90deg, rgba(218,121,17,1) 52%, rgba(240,207,13,1) 100%);
+background: rgb(3,107,59);
+background: linear-gradient(90deg, rgba(3,107,59,1) 0%, rgba(35,191,50,0.9640231092436975) 62%, rgba(49,218,74,1) 100%);
 
 &:hover{
     filter: brightness(1.03);

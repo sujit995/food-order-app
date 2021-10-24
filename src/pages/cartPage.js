@@ -135,8 +135,8 @@ const CartPage = () => {
             {
                 cartProducts.length > 0 && (
                     <MainCart>
+                        <TopHeading>Your Cart Items</TopHeading>
                         <ProductCart>
-                            <TopHeading>Your Cart Items</TopHeading>
                             <CartProducts cartProducts={cartProducts}
                                 cartProductIncrease={cartProductIncrease}
                                 cartProductDecrease={cartProductDecrease}
@@ -155,7 +155,7 @@ const CartPage = () => {
                                 amount={totalPrice * 100}
                             ></StripeCheckout>
                             <Text>Or</Text>
-                            <Button onClick={() => triggerModal()}>Cah on Delivery</Button>
+                            <Button onClick={() => triggerModal()}>Cash on Delivery</Button>
                         </CartSummary>
                     </MainCart>
                 )}

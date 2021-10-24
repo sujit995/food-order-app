@@ -58,7 +58,7 @@ const Navbar = ({ user, totalProducts }) => {
                                 <ShowUserName>{user}</ShowUserName>
                                 <NavLink to="/cart">
                                     <CartWrapper>
-                                        <FaOpencart style={{ color: '#000', fontSize: '28px' }} />
+                                        <FaOpencart style={{ color: '#009933', fontSize: '28px' }} />
                                         <span>{totalProducts}</span>
                                     </CartWrapper>
                                 </NavLink>

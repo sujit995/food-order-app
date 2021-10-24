@@ -9,9 +9,9 @@ const CardContainer = styled.div`
 `;
 
 const CardImage = styled.div`
-    height: 25rem;
+    height: 15rem;
     width: 100%;
-    padding: 1.5rem;
+    padding: 1rem;
     overflow: hidden;
     posirion: relative;
     img{
@@ -27,32 +27,32 @@ const Content = styled.div`
     padding: 2rem;
     padding-top: 0;
     .stars{
-        padding-bottom: 1rem;
+        padding-bottom: .8rem;
     }
     i{
-        font-size: 1.7rem;
+        font-size: 1.2rem;
         color: green;
     }
     h3{
         color: black;
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
     p{
         color: #696969;
-        font-size: 1.6rem;
-        padding: .5rem 0;
-        line-height: 1;
+        font-size: .8rem;
+        padding: .3rem 0;
+        line-height: 1.1;
     }
     span{
         color: green;
         margin-left: 1rem;
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 `
 const Button = styled.button`
     margin-top: 1rem;
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #fff;
     background: #000333;
     border-radius: .5rem;
