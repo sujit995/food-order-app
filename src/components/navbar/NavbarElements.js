@@ -20,8 +20,13 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
+<<<<<<< HEAD
   font-size: 1rem;
   font-weight: 500;
+=======
+  font-size: 1.2rem;
+  font-weight: bold;
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
 `;
 
 export const Bars = styled(FaBars)`

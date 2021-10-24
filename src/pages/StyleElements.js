@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // Cart Page Styling
 export const MainCart = styled.div`
     display: flex;
+<<<<<<< HEAD
     flex-direction: column;
     align-items: center
 `
@@ -19,6 +20,25 @@ export const ProductCart = styled.div`
         display: flex;
         flex-direction: column;
     }
+=======
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    @media screen and (max-width: 480px){
+        display: flex;
+        flex-direction: column;
+    }
+`
+export const TopHeading = styled.h1`
+    text-align: center;
+    text-decoration: underline 4px;
+`
+
+export const ProductCart = styled.div`
+    width: 70%;
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
     @media screen and (min-width: 400px){
         margin: 20px;
     }
@@ -36,9 +56,15 @@ export const CartSummary = styled.div`
     @media screen and (max-width: 876px){
         height: 300px;
     }
+<<<<<<< HEAD
     @media screen and (max-width: 650px){
         width: 200px;
         height: 250px;
+=======
+    @media screen and (max-width: 480px){
+        width: 300px;
+        margin: auto;
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
     }
 `
 
@@ -78,6 +104,10 @@ export const Button = styled.button`
     height: 28px;
     width: 120px;
     background-color: #00E400;
+<<<<<<< HEAD
+=======
+    border: #;
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
     border-radius: 5px;
     box-shadow: .5px .5px .5px .5px rgba(0,0,0,0.5);
     color: white;
@@ -95,7 +125,11 @@ export const EmptyCart = styled.div`
         font-size: 2rem;
         margin-top: 40px;
     }
+<<<<<<< HEAD
 `
+=======
+` 
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
 
 // Contact Page Styling
 export const ContactFormWrapper = styled.div`
@@ -113,7 +147,10 @@ export const Form = styled.form`
 `
 export const ContactHeading = styled.h1`
      margin-bottom: 30px;
+<<<<<<< HEAD
      color: green;
+=======
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
 `
 export const Input = styled.input`
   width: 400px;
@@ -175,6 +212,7 @@ export const ContactButton = styled.button`
 
 export const MainContainer = styled.div`
     display: flex;
+<<<<<<< HEAD
     flex-direction: row;
     align-items: center;
     padding-top: 6rem;
@@ -218,10 +256,39 @@ export const Links = styled(Link)`
     &:hover {
         background: green;
     }
+=======
+    flex-direction: column;
+`
+
+export const HeadingContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin-top: 4rem;
+`
+
+export const MainHeading = styled.div`
+    border: 1px solid transparent;
+    width: 50%;
+`
+export const Links = styled(Link)`
+    padding: 1rem 1rem 1rem 1rem;
+    width: 30%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #ef5924;
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
     @media screen and (max-width: 768px){
         
     }
 `
+<<<<<<< HEAD
 
 export const Head = styled.span`
     color: green;
@@ -245,6 +312,29 @@ export const SmallText = styled.h4`
     @media screen and (max-width: 1000px){
         font-size: 20px
        }
+=======
+export const SubHeading = styled.div`
+    border: 1px solid transparent;
+    margin-left: 20px;
+    width: 20%;
+    @media screen and (max-width: 768px){
+        display: none;
+    }
+`
+
+export const Line = styled.hr`
+    width: 30%;
+    background-color: #ef5924;
+    height: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 4px;
+`
+export const SmallText = styled.h4`
+    margin-top: 30px;
+    font-size: 1.5rem;
+    color: #696969;
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
 `
 
 export const Heading = styled.h1`
@@ -258,6 +348,7 @@ export const Heading = styled.h1`
         text-align: left;
     }
 `
+<<<<<<< HEAD
 // About Page
 
 export const Container = styled.div`
@@ -356,3 +447,17 @@ export const ProdContainer = styled.div`
         padding: 1rem;
     }
 `
+=======
+export const ImageContainer = styled.div`
+   margin: 90px; 
+   align-items: center;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+   gap: 10px 10px;
+
+   @media screen and (max-width: 480px){
+        justify-content: center;
+    }
+ `
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b

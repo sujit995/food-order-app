@@ -137,6 +137,10 @@ const CartPage = () => {
                     <MainCart>
                         <TopHeading>Your Cart Items</TopHeading>
                         <ProductCart>
+<<<<<<< HEAD
+=======
+                            <TopHeading>Your Cart Items</TopHeading>
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
                             <CartProducts cartProducts={cartProducts}
                                 cartProductIncrease={cartProductIncrease}
                                 cartProductDecrease={cartProductDecrease}

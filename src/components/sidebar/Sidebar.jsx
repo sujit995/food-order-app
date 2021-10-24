@@ -5,6 +5,7 @@ import { auth, fs } from '../../config/Config';
 
 
 import {
+<<<<<<< HEAD
   SidebarContainer,
   Icon,
   CloseIcon,
@@ -13,6 +14,16 @@ import {
   SidebarBtn,
   SidebarBtnLink,
   NavLogBtnLink,
+=======
+    SidebarContainer,
+    Icon,
+    CloseIcon,
+    SidebarMenu,
+    SidebarLink,
+    SidebarBtn,
+    SidebarBtnLink,
+    NavLogBtnLink,
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
 } from './SidebarElement';
 
 const Sidebar = ({ isOpen, toggle }) => {

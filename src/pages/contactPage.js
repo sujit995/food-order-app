@@ -66,7 +66,11 @@ const Contact = () => {
 
         <ContactButton
           type="submit"
+<<<<<<< HEAD
           style={{ background: loader ? "#ccc" : "green" }}
+=======
+          style={{ background: loader ? "#ccc" : " linear-gradient(90deg, rgba(218,121,17,1) 52%, rgba(240,207,13,1) 100%)" }}
+>>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
         >
           Submit
         </ContactButton>
