@@ -33,13 +33,8 @@ const IndividualCart = ({ cart, cartProductIncrease, cartProductDecrease }) => {
                         <img src={cart.url} alt="dish-image" />
                     </CardBody>
                     <CardDetails>
-<<<<<<< HEAD
                         <h3>{cart.title}</h3>
                         <span>₹{cart.price}</span>
-=======
-                        <CardTitle>{cart.title}</CardTitle>
-                        <Price>₹{cart.price}</Price>
->>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
                         <QuantityBox>
                             <button><Icon icon={minus} size={20} onClick={handleProductDecrease} style={{cursor: 'pointer'}} /></button>
                             <Input>{cart.qty}</Input>

@@ -67,7 +67,6 @@ const IndividualProducts = ({ items, addToCart }) => {
         addToCart(items);
     }
     return (
-<<<<<<< HEAD
         <>
             <CardContainer>
                 <CardImage>
@@ -88,17 +87,6 @@ const IndividualProducts = ({ items, addToCart }) => {
                 </Content>
             </CardContainer>
         </>
-=======
-        <CardContainer>
-            <CardBody>
-                <CardImage src={items.url} alt="dish-image" />
-                <CardTitle>{items.title}</CardTitle>
-                <CardDescription>{items.description}</CardDescription>
-                <Price>₹{items.price}</Price>
-            </CardBody>
-            <Button onClick={handleAddToCart}>Add To Cart</Button>
-        </CardContainer>
->>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
     )
 }
 
