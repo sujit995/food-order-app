@@ -1,44 +1,23 @@
 import React from 'react'
-<<<<<<< HEAD
+// import HomeCard from '../components/';
+import { Link} from 'react-router-dom';
 
-import { MainContainer, HeadContainer, Links, Head, SubHead, ImgContainer, SmallText } from './StyleElements';
-=======
-import HomeCard from './HomeCard';
-
-import { MainContainer, HeadingContainer, MainHeading, Heading, Links, SubHeading, ImageContainer, Line, SmallText } from './StyleElements';
-
-
->>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
 
 const Home = () => {
     return (
-        <MainContainer>
-<<<<<<< HEAD
-                    <HeadContainer>
-                        <Head>Our Special Dish</Head>
-                        <SubHead>Fried Chicken</SubHead>
-                        <SmallText>Your Favorite Food delivery partner</SmallText>
-                        <Links to="/menu">Order Now</Links>
-                    </HeadContainer>
-                    <ImgContainer>
-                        <img src="images/home-img-2.png" alt="" />
-                    </ImgContainer>   
-=======
-            <HeadingContainer>
-                <MainHeading>
-                    <Heading>What are you <br /> having for <br />Lunch?</Heading><br /><br />
-                    <Links to="/menu">Order Now</Links>
-                </MainHeading>
-                <SubHeading>
-                    <SmallText>One Click, one order and you get the food delivered.</SmallText>
-                    <Line />
-                </SubHeading>
-            </HeadingContainer>
-            <ImageContainer>
-                <HomeCard />
-            </ImageContainer>
->>>>>>> 7fb1e58a6b8ad7f602038d272698c30dea9a738b
-        </MainContainer>
+        <div className='flex flex-col lg:flex-row mt-16 mx-auto'>
+            <div className="w-1/2">
+                <div className='justify-center mx-auto px-[40px] items-center'>
+                <h3 className='text-green-700 font-semibold text-[30px]'>Our Special Dish</h3>
+                <h6 className='text-customBlue font-semibold text-[50px]'>Fried Chicken</h6>
+                <p className='text-gray-500 font-semibold text-[20px]'>Your Favorite Food delivery partner</p>
+                <button className='bg-customBlue text-white font-semibold text-[20px] rounded-md px-4 py-2'>Order Now</button>
+                </div>
+            </div>
+            <div className='w-1/2'>
+            <img src="images/home-img-2.png" alt="chicken" />
+            </div>
+        </div>
     )
 }
 

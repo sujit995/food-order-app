@@ -1,7 +1,7 @@
-import firebase from 'firebase';
-import 'firebase/auth';
-import 'firebase/firestore';
-import 'firebase/storage';
+import firebase from 'firebase/compat/app'; // Import the compat version for Firebase 10
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import 'firebase/compat/storage';
 
 
 const firebaseConfig = {
@@ -13,10 +13,10 @@ const firebaseConfig = {
   appId: "1:611293670819:web:db7bf22acafafa3eec7e16"
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
-const auth = firebase.auth();
-const fs = firebase.firestore();
-const storage = firebase.storage();
+const auth = app.auth();
+const fs = app.firestore();
+const storage = app.storage();
 
 export { auth, fs, storage }

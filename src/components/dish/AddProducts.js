@@ -1,148 +1,120 @@
-import React, { useState } from 'react'
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import { storage, fs } from '../../config/Config';
-
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ProductContainer = styled.div`
-margin-top: 40px;
-width: 100%;
-height: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-
-`
-
-const WrapperContainer = styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 10px;
-`;
-
-
-const FormContainer = styled.form`
-width: 80%;
-display: flex;
-flex-direction: column;
-`;
-
-const Input = styled.input`
-width: 100%;
-height: 42px;
-outline: none;
-padding: 0 10px;
-border: 1px solid rgba(200, 200, 200, 0.4);
-margin-top: 10px;
-
- &::placeholder{
-     color: rgba(200, 200, 200, 1);
- }
- &:focus{
-     outline: none;
-     border-bottom: 2px solid rgba(0,212,255,1);
- }
-`;
-
-const File = styled.input`
-margin-top: 10px;
-cursor: pointer;
-
- &::placeholder{
-     color: rgba(200, 200, 200, 1);
- }
-`;
-
-export const SubmitButton = styled.button`
-width: 100%;
-padding: 10px 40%;
-color: #fff;
-font-size: 15px;
-font-weight: bold;
-border: none;
-border-radius: 100px 100px 100px 100px;
-cursor: pointer;
-transition: all, 240ms ease-in-out;
-background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-margin-top: 30px;
-
-&:hover{
-    filter: brightness(1.03);
-}
-`;
-
 const AddProducts = () => {
-
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState(null);
-
     const [uploadError, setUploadError] = useState('');
-    const types = ['image/jpg', 'image/jpeg', 'image/png', 'image/PNG'];
+    const types = ['image/jpg', 'image/jpeg', 'image/png'];
 
     const handleProductImg = (e) => {
-        let selectedFile = e.target.files[0];
+        const selectedFile = e.target.files[0];
         if (selectedFile) {
-            if (selectedFile && types.includes(selectedFile.type)) {
+            if (types.includes(selectedFile.type)) {
                 setImage(selectedFile);
-            }
-            else {
+            } else {
                 setImage(null);
-                toast.error('please select a valid image file type { png or jpg)');
+                toast.error('Please select a valid image file type (PNG or JPG)');
             }
+        } else {
+            toast.error('Please select a file');
         }
-        else {
-            console.log('please select your file');
-        }
-    }
+    };
 
     const handleAddDishes = (e) => {
         e.preventDefault();
+        if (!title || !description || !price || !image) {
+            toast.error('Please fill in all fields');
+            return;
+        }
         const uploadTask = storage.ref(`dish-images/${image.name}`).put(image);
-        uploadTask.on('state_changed', snapshot => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            console.log(progress);
-        }, error => console.log(error.message), () => {
-            storage.ref('dish-images').child(image.name).getDownloadURL().then(url => {
-                fs.collection('products').add({
-                    title,
-                    description,
-                    price: Number(price),
-                    url
-                }).then(() => {
-                    toast.success('Product added Successfully');
-                    setTitle('');
-                    setDescription('');
-                    setPrice('');
-                    document.getElementById('file').value = "";
-                    setUploadError('')
-                }).catch(error => setUploadError(error.message))
-            })
-        })
-    }
-    return (
-        <ProductContainer>
-            <WrapperContainer>
-                <FormContainer onSubmit={handleAddDishes}>
-                    <Input type="text" placeholder="Dish Name" required onChange={(e) => setTitle(e.target.value)} value={title} />
-                    <Input type="text" placeholder="Dish Description" required onChange={(e) => setDescription(e.target.value)} value={description} />
-                    <Input type="number" placeholder="Dish Price" required onChange={(e) => setPrice(e.target.value)} value={price} />
-                    <File type="file" id="file" required onChange={handleProductImg} />
-                    <SubmitButton type="submit">Submit</SubmitButton>
-                </FormContainer>
-                {uploadError && <>
-                    <br />
-                    <div>{uploadError}</div>
-                </>}
-            </WrapperContainer>
-        </ProductContainer>
-    )
-}
+        uploadTask.on(
+            'state_changed',
+            (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log(progress);
+            },
+            (error) => {
+                console.log(error.message);
+                setUploadError(error.message);
+            },
+            () => {
+                storage
+                    .ref('dish-images')
+                    .child(image.name)
+                    .getDownloadURL()
+                    .then((url) => {
+                        fs.collection('products')
+                            .add({
+                                title,
+                                description,
+                                price: Number(price),
+                                url,
+                            })
+                            .then(() => {
+                                toast.success('Product added successfully');
+                                setTitle('');
+                                setDescription('');
+                                setPrice('');
+                                setImage(null);
+                                setUploadError('');
+                                document.getElementById('file').value = '';
+                            })
+                            .catch((error) => setUploadError(error.message));
+                    });
+            }
+        );
+    };
 
-export default AddProducts
+    return (
+        <div className="mt-10 w-full h-full flex flex-col items-center justify-center">
+            <div className="w-full flex flex-col items-center mt-4">
+                <form className="w-[80%] d-flex flex-col" onSubmit={handleAddDishes}>
+                    <input
+                        className="w-full h-10 outline-none px-4 border border-solid border-gray-300 mt-4 placeholder-gray-400 focus:border-b-2 focus:border-blue-500"
+                        type="text"
+                        placeholder="Dish Name"
+                        required
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                    />
+                    <input
+                        className="w-full h-10 outline-none px-4 border border-solid border-gray-300 mt-4 placeholder-gray-400 focus:border-b-2 focus:border-blue-500"
+                        type="text"
+                        placeholder="Dish Description"
+                        required
+                        onChange={(e) => setDescription(e.target.value)}
+                        value={description}
+                    />
+                    <input
+                        className="w-full h-10 outline-none px-4 border border-solid border-gray-300 mt-4 placeholder-gray-400 focus:border-b-2 focus:border-blue-500"
+                        type="number"
+                        placeholder="Dish Price"
+                        required
+                        onChange={(e) => setPrice(e.target.value)}
+                        value={price}
+                    />
+                    <input className="placeholder-gray-400 mt-4 cursor-pointer" type="file" id="file" required onChange={handleProductImg} />
+                    <button
+                        className="w-full py-2 px-10 text-white text-base font-bold border-none rounded-full cursor-pointer transition-all duration-240 ease-in-out bg-gradient-to-r from-blue-900 via-blue-600 to-blue-400 mt-8 hover:brightness-103"
+                        type="submit"
+                    >
+                        Submit
+                    </button>
+                </form>
+                {uploadError && (
+                    <>
+                        <br />
+                        <div>{uploadError}</div>
+                    </>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default AddProducts;

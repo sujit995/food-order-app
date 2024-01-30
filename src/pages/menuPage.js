@@ -1,82 +1,71 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Products from '../components/dish/Products';
 import { auth, fs } from '../config/Config';
-import { Container, ProdContainer } from './StyleElements';
+import { useNavigate } from 'react-router-dom';
+import { collection, onSnapshot } from 'firebase/firestore';
 
-
-const Menu = (props) => {
-
+const Menu = () => {
+    const navigate = useNavigate();
     const [products, setProducts] = useState([]);
-
-    const getProducts = async () => {
-        const products = await fs.collection('products').get();
-        const productArray = [];
-        for (let snap of products.docs) {
-            let data = snap.data();
-            data.ID = snap.id;
-            productArray.push({
-                ...data
-            })
-            if (productArray.length === products.docs.length) {
-                setProducts(productArray)
-            }
-        }
-    }
+    const [uid, setUid] = useState(null);
 
     useEffect(() => {
-        getProducts();
-    }, [])
+        const unsubscribeAuth = auth.onAuthStateChanged(user => {
+            if (user) {
+                setUid(user.uid);
+            }
+        });
 
-    function GetUserUid() {
-        const [uid, setUid] = useState(null);
-        useEffect(() => {
-            auth.onAuthStateChanged(user => {
-                if (user) {
-                    setUid(user.uid);
-                }
-            })
-        }, [])
-        return uid;
-    }
+        const unsubscribeProducts = onSnapshot(collection(fs, 'products'), snapshot => {
+            const productArray = snapshot.docs.map(doc => ({
+                ...doc.data(),
+                ID: doc.id
+            }));
+            setProducts(productArray);
+        });
 
-    const uid = GetUserUid();
+        return () => {
+            unsubscribeAuth();
+            unsubscribeProducts();
+        };
+    }, []);
 
-    let Product;
     const addToCart = (product) => {
         if (uid !== null) {
-            Product = product;
-            product['qty'] = 1;
-            product['TotalProductPrice'] = Product.qty * Product.price;
-            fs.collection('Cart ' + uid).doc(product.ID).set(product).then(() => {
-                console.log('successfully added to cart');
-            })
+            const productWithQty = {
+                ...product,
+                qty: 1,
+                TotalProductPrice: product.qty * product.price
+            };
+
+            fs.collection(`Cart ${uid}`).doc(product.ID)
+                .set(productWithQty)
+                .then(() => {
+                    console.log('Successfully added to cart');
+                })
+                .catch(error => {
+                    console.error('Error adding to cart:', error);
+                });
         } else {
-            props.history.push('/signin');
+            navigate('/signin');
         }
-    }
+    };
 
     return (
-        <>
-            <Container>
-                <h3>Our Dishes</h3>
-                <h1>Popular Dishes</h1>
-            </Container>
-            <ProdContainer>
-            {products.length > 0 && (
-                <>
-                    <Products products={products} addToCart={addToCart} />
-                </>
+        <div className='flex flex-col'>
+            <div className='justify-center items-center align-middle mx-auto text-center'>
+            <h3 className='text-green-700 font-semibold text-[30px]'>Our Dishes</h3>
+            <h1 className='text-customBlue font-semibold text-[50px]'>Popular Dishes</h1>
+            </div>
+            <div className='mx-10 my-10'>
+            {products.length > 0 ? (
+                <Products products={products} addToCart={addToCart} />
+            ) : (
+                <div>Please Wait...</div>
             )}
-            {
-                products.length < 1 && (
-                    <div>Please Wait...</div>
-                )
-            }
-            </ProdContainer>
-        </>
-    )
-}
+            </div>
+        </div>
+    );
+};
 
-export default Menu
-
-
+export default Menu;

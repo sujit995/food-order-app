@@ -1,25 +1,19 @@
 import React from 'react'
 import IndividualCart from './IndividualCart'
-import styled from 'styled-components';
-
-const CardContainer = styled.div`
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    border-radius: 19px;
-    background-color: #fff;
-    box-shadow: 0 0 8px rgba(15, 15, 15, 0.28);
-    overflow: hidden;
-`;
 
 
 const CartProducts = ({ cartProducts, cartProductIncrease, cartProductDecrease }) => {
-    return cartProducts.map((cart) => (
-        <CardContainer>
-            <IndividualCart key={cart.ID} cart={cart} cartProductIncrease={cartProductIncrease} cartProductDecrease={cartProductDecrease} />
-        </CardContainer>
-    ))
+    return(
+        <div className='grid grid-cols-4 gap-3'>
+            {
+                cartProducts.map((cart) => (
+                    <div className="w-full flex flex-row m-20 rounded-19 bg-white shadow-md overflow-hidden">
+                        <IndividualCart key={cart.ID} cart={cart} cartProductIncrease={cartProductIncrease} cartProductDecrease={cartProductDecrease} />
+                    </div>
+                ))
+            }
+        </div>
+    )
 }
 
 export default CartProducts
